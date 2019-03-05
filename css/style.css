@@ -1,0 +1,225 @@
+@import url('https://fonts.googleapis.com/css?family=Srisakdi');
+@import url('https://fonts.googleapis.com/css?family=Righteous');
+@import url('https://fonts.googleapis.com/css?family=Laila');
+@import url('https://fonts.googleapis.com/css?family=PT+Sans');
+
+@font-face {
+  font-family: monaco;
+  src: url(monaco.tff);
+}
+
+@font-face {
+  font-family: andale;
+  src: url(andale.tff);
+}
+
+/* -----------------------------------------------------------------------------
+Author : Roshin Jose
+Email  : roshinjose1@gmail.com
+Phone  : +91 964 522 8131
+Web : roshinjose.com
+Git Repository : git@github.com:Roshinjose167/apt.git
+----------------------------------------------------------------------------- */
+
+/* ----------------------------------
+   Base styles: opinionated defaults
+   ---------------------------------- */
+
+body { background-color: #020000}
+
+/*Particles Style*/
+#particles-js {
+    position: fixed;
+    width:100%;
+    height: 100%;
+    z-index: -1;
+    top:0;
+    left:0;
+    right: 0;
+    bottom:0;
+}
+
+
+
+/* -----------------------------------------------------------------------------
+Author : Bart Tarasewicz
+Email  : barttaro@gmail.com
+Git Profile: https://github.com/bartektenDev
+----------------------------------------------------------------------------- */
+
+/* ----------------------------------
+   get element by id = #name
+   get all items that start with this tag = a, h1, h2, input, button, div
+   get element by class = .name
+   ---------------------------------- */
+
+body  {
+  font-family: 'Righteous', cursive;
+  color: #fff;
+}
+
+#whoami {
+  text-align: center;
+  color: #19fc52;
+  font-size: 60px;
+}
+
+#trait {
+  color: #19fc52;
+  font-size: 60px;
+}
+
+.wrap {
+  margin-top: 100px;
+  margin-left: auto;
+  margin-right: auto;
+  min-width: 800px;
+  width: 50%;
+}
+
+.belowwrap {
+  margin-left: auto;
+  margin-right: auto;
+  min-width: 800px;
+  width: 50%;
+}
+
+.projects {
+  margin-top: 400px;
+  margin-left: auto;
+  margin-right: auto;
+  min-width: 800px;
+  width: 50%;
+  font-family: 'Laila', serif;
+  font-size: 30px;
+}
+
+#project1  {
+  border: 3px solid #f24f44;
+  border-radius: 20px;
+  padding: 25px;
+  margin: 25px;
+  font-family: 'Laila', serif;
+  font-size: 30px;
+}
+
+#project2 {
+  border: 3px solid #19b5fc;
+  border-radius: 20px;
+  padding: 25px;
+  margin: 25px;
+  font-family: 'Laila', serif;
+  font-size: 30px;
+}
+
+#project3  {
+  border: 3px solid #e1fa00;
+  border-radius: 20px;
+  padding: 25px;
+  margin: 25px;
+  font-family: 'Laila', serif;
+  font-size: 30px;
+}
+
+#project1:hover  {
+  background-color: #f24f44;
+  color: white;
+  cursor: pointer;
+  transition: 0.5s;
+}
+
+#project2:hover  {
+  background-color: #19b5fc;
+  color: white;
+  cursor: pointer;
+  transition: 0.5s;
+}
+
+#project3:hover  {
+  background-color: #e1fa00;
+  color: black;
+  cursor: pointer;
+  transition: 0.5s;
+}
+
+
+
+.languagesProgrammed  {
+  margin-left: 10px;
+}
+
+#HTML {
+  font-size: 16px;
+  margin-left: 10px;
+}
+
+#CSS {
+  font-size: 16px;
+  margin-left: 10px;
+}
+
+#Javascript {
+  font-size: 16px;
+  margin-left: 10px;
+}
+
+#Java {
+  font-size: 16px;
+  margin-left: 10px;
+}
+
+#PHP {
+  font-size: 16px;
+  margin-left: 10px;
+}
+
+.dateCreated  {
+  font-size: 20px;
+}
+
+.intro  {
+  margin-top: 100px;
+  margin-left: auto;
+  margin-right: auto;
+  min-width: 800px;
+  width: 50%;
+  font-family: 'PT Sans', sans-serif;
+  font-size: 30px;
+}
+
+.introinfo  {
+  font-family: 'Laila', serif;
+  margin-left: auto;
+  margin-right: auto;
+  min-width: 750px;
+  width: 50%;
+  font-size: 20px;
+}
+
+.experience  {
+  margin-top: 100px;
+  margin-left: auto;
+  margin-right: auto;
+  min-width: 800px;
+  width: 50%;
+  font-family: 'PT Sans', sans-serif;
+  font-size: 30px;
+}
+
+.experienceinfo  {
+  font-family: 'Laila', serif;
+  margin-left: auto;
+  margin-right: auto;
+  min-width: 750px;
+  width: 50%;
+  font-size: 20px;
+}
+
+.experienceinfolang  {
+  font-family: 'Laila', serif;
+  margin-left: auto;
+  margin-right: auto;
+  min-width: 750px;
+  width: 50%;
+  font-size: 20px;
+}
