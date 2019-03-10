@@ -26,10 +26,10 @@ Table of Content:
 06/ feature
 07/ button
 08/ service
-09/ testimonials 
-10/ blog 
-11/ contact 
-12/ footer 
+09/ testimonials
+10/ blog
+11/ contact
+12/ footer
 =====================================================================*/
 /*----------------------------------------------------*/
 /*font Variables*/
@@ -311,7 +311,7 @@ i:before {
   top: -70px;
   left: 0;
   right: 0;
-  background: rgba(0, 0, 0, 0.6);
+  background: rgba(0, 0, 0, 0.25);
   -webkit-transform: translateY(70px);
   -ms-transform: translateY(70px);
   transform: translateY(70px);
