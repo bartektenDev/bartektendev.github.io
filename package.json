@@ -1,12 +1,11 @@
 {
-	"name": "milligram-starter",
-	"version": "0.0.6",
-	"description": "A super simple boilerplate project with Milligram.",
-	"homepage": "https://milligram.github.io",
-	"repository": "milligram/milligram-starter",
+	"name": "bartektendev.github.io",
+	"version": "1.0.0",
+	"description": "Bart's Portfolio",
+	"homepage": "https://bartektendev.github.io/v2/",
+	"repository": "bartektenDev/bartektendev.github.io",
 	"license": "MIT",
-	"author": "CJ Patoilo <cjpatoilo@gmail.com>",
-	"private": "true",
+	"author": "Bart Tarasewicz <barttaro@gmail.com>",
 	"engines": {
 		"node": ">=4"
 	},
