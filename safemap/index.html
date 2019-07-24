@@ -1,38 +1,144 @@
 <html>
 <head>
-<script src="jquery-2.1.4.js"></script>
-<link rel="stylesheet" type="text/css" href="styles.css">
+  <script
+    src="https://code.jquery.com/jquery-2.1.4.js"
+    integrity="sha256-siFczlgw4jULnUICcdm9gjQPZkw/YPDqhQ9+nAOScE4="
+    crossorigin="anonymous"></script>
+<link rel="stylesheet" href="./assets/css/stylesearch.css">
 <style>
       #map {
-        height: 500px;
+        height: 80%;
       }
 </style>
 </head>
 <body>
-<div id="navbar"><span>Google Maps - Javascript API</span></div>
+<div id="navbar"><span>ver 1.0.0</span></div>
+<img src="./assets/images/safemapfulllogo.png" width="" height="7%" />
+<div class="cntr">
+	<div class="align_search">
+	  <label class="search" for="inpt_search">
+			<input id="inpt_search" type="text" />
+		</label>
+	</div>
+  <p></p>
+</div>
 <div id="wrapper">
+<input id="pac-input" class="controls" type="text" placeholder="Search Box">
 <div id="map"></div>
+<div id="mapLegend"></div>
     <script>
-      var map;
+      var damagedCityRadius = {
+        chicago: {
+          center: {lat: 41.9764607, lng: -88.0553876},
+          population: 1000
+        }
+      };
+
       function initMap() {
-        map = new google.maps.Map(document.getElementById('map'), {
-          center: {lat: -34.397, lng: 150.644},
-          zoom: 9
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 13,
+          center: {lat: 41.9764607, lng: -88.0553876},
+          mapTypeId: 'terrain'
         });
 
-	var marker = new google.maps.Marker({
-    position: {lat: -34.397, lng: 150.644},
-    map: map,
-    title: 'Hello World!',
-	icon: 'pin.png',
-	animation: google.maps.Animation.BOUNCE,
-	draggable: true
-  });
-	}
+        // Create the search box and link it to the UI element.
+        var input = document.getElementById('pac-input');
+        var searchBox = new google.maps.places.SearchBox(input);
+        map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
 
+        // Bias the SearchBox results towards current map's viewport.
+        map.addListener('bounds_changed', function() {
+          searchBox.setBounds(map.getBounds());
+        });
+
+        var marker = new google.maps.Marker({
+            position: {lat: 41.9764607, lng: -88.0553876},
+            map: map,
+            title: 'Hello World!',
+          	icon: './assets/images/pinmarkerbasic48.png',
+          	draggable: false
+          });
+
+          var marker2 = new google.maps.Marker({
+              position: {lat: 41.9764622, lng: -88.0652871},
+              map: map,
+              title: 'Hello World!',
+            	icon: './assets/images/pincarepackage48.png',
+            	draggable: false
+            });
+
+        // Construct the circle for each value in citymap.
+        // Note: We scale the area of the circle based on the population.
+        for (var city in damagedCityRadius) {
+          // Add the circle for this city to the map.
+          var cityCircle = new google.maps.Circle({
+            strokeColor: '#FF0000',
+            strokeOpacity: 0.8,
+            strokeWeight: 2,
+            fillColor: '#fbff82',
+            fillOpacity: 0.35,
+            map: map,
+            center: damagedCityRadius[city].center,
+            radius: Math.sqrt(damagedCityRadius[city].population) * 100
+          });
+        }
+
+
+
+        var markers = [];
+        // Listen for the event fired when the user selects a prediction and retrieve
+        // more details for that place.
+        searchBox.addListener('places_changed', function() {
+          var places = searchBox.getPlaces();
+
+          if (places.length == 0) {
+            return;
+          }
+
+          // Clear out the old markers.
+          markers.forEach(function(marker) {
+            marker.setMap(null);
+          });
+          markers = [];
+
+          // For each place, get the icon, name and location.
+          var bounds = new google.maps.LatLngBounds();
+          places.forEach(function(place) {
+            if (!place.geometry) {
+              console.log("Returned place contains no geometry");
+              return;
+            }
+            var icon = {
+              url: place.icon,
+              size: new google.maps.Size(71, 71),
+              origin: new google.maps.Point(0, 0),
+              anchor: new google.maps.Point(17, 34),
+              scaledSize: new google.maps.Size(25, 25)
+            };
+
+            // Create a marker for each place.
+            markers.push(new google.maps.Marker({
+              map: map,
+              icon: icon,
+              title: place.name,
+              position: place.geometry.location
+            }));
+
+            if (place.geometry.viewport) {
+              // Only geocodes have viewport.
+              bounds.union(place.geometry.viewport);
+            } else {
+              bounds.extend(place.geometry.location);
+            }
+          });
+          map.fitBounds(bounds);
+        });
+
+      }
     </script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBsgat5Zox4OOhr53CyyefATPdeLF0v4Tc&callback=initMap"
     async defer></script>
+    <script src="./assets/js/scriptsearch.js"></script>
 </div>
 </body>
 </html>
