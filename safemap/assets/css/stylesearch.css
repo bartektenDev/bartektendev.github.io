@@ -13,7 +13,7 @@
   display: inline-block;
   position: relative;
   height: 35px;
-  width: 35px;
+  width: 80%;
   box-sizing: border-box;
   margin: 0px 8px 7px 0px;
   padding: 7px 9px 0px 9px;
@@ -34,15 +34,6 @@
   -webkit-transform: rotate(-45deg);
           transform: rotate(-45deg);
   transition: all 200ms ease;
-}
-.search.active,
-.search:hover {
-  width: 200px;
-  margin-right: 0px;
-}
-.search.active:after,
-.search:hover:after {
-  height: 0px;
 }
 .search input {
   width: 100%;

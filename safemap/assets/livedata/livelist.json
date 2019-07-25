@@ -1,0 +1,42 @@
+{"safemap_affectedareas": {
+  "ver": "1.0.0",
+  "author": "Bart Tarasewicz",
+  "area1": {
+    "markers": [
+      {"centerarea": "lat: 10, long: 20",
+        "onclick": "CreateNewDoc()"
+      },
+      {"supplydrop": "lat: 13, long: 25",
+        "onclick": "OpenDoc()"
+      },
+      {"shelter": "lat: 13, long: 25",
+        "onclick": "CloseDoc()"
+      },
+      {"cleandrinkingwater": "lat: 13, long: 25",
+        "onclick": "CloseDoc()"
+      },
+      {"food": "lat: 13, long: 25",
+        "onclick": "CloseDoc()"
+      }
+    ]
+  },
+  "area2": {
+    "markers": [
+      {"centerarea": "lat: 10, long: 20",
+        "onclick": "CreateNewDoc()"
+      },
+      {"supplydrop": "lat: 13, long: 25",
+        "onclick": "OpenDoc()"
+      },
+      {"shelter": "lat: 13, long: 25",
+        "onclick": "CloseDoc()"
+      },
+      {"cleandrinkingwater": "lat: 13, long: 25",
+        "onclick": "CloseDoc()"
+      },
+      {"food": "lat: 13, long: 25",
+        "onclick": "CloseDoc()"
+      }
+    ]
+  }
+}}
