@@ -11,7 +11,11 @@ function initMap() {
     map = new google.maps.Map(document.getElementById('map'), {
       zoom: 2,
       center: {lat: 50, lng: 50},
-      mapTypeId: 'terrain'
+      mapTypeId: 'terrain',
+      mapTypeControlOptions: {
+            mapTypeIds: ['roadmap', 'satellite', 'hybrid', 'terrain',
+                    'styled_map']
+          }
     });
 
     infoWindow = new google.maps.InfoWindow;
@@ -70,7 +74,7 @@ function initMap() {
     var bottledwater = new google.maps.Marker({
         position: {lat: 41.9664622, lng: -88.0352871},
         map: map,
-        title: 'Hello World!',
+        title: 'Drinking Water',
         icon: './assets/images/pinmarkerbottledwater48.png',
         draggable: false
       });
@@ -78,7 +82,7 @@ function initMap() {
     var bottledwater2 = new google.maps.Marker({
         position: {lat: 41.985622, lng: -88.0682871},
         map: map,
-        title: 'Hello World!',
+        title: 'Drinking Water',
         icon: './assets/images/pinmarkerbottledwater48.png',
         draggable: false
       });
@@ -86,7 +90,7 @@ function initMap() {
     var bottledwater3 = new google.maps.Marker({
         position: {lat: 41.974622, lng: -88.0382871},
         map: map,
-        title: 'Hello World!',
+        title: 'Drinking Water',
         icon: './assets/images/pinmarkerbottledwater48.png',
         draggable: false
       });
@@ -137,6 +141,32 @@ function initMap() {
         title: 'Hello World!',
         icon: './assets/images/pinmarkerpowerout248.png',
         draggable: false
+      });
+
+      var waterString = '<div id="content">'+
+                  '<div id="siteNotice">'+
+                  '<h3 id="firstHeading" class="firstHeading">Drinking Water</h3>'+
+                  '<div id="bodyContent">'+
+                  '<p><b>This location has drinking water.</p></b>' +
+                  '<p><b>Coordinates: lat and long</p></b>'+
+                  '</div>'+
+                  '</div>'+
+                  '</div>';
+
+      var eachMarkerInfoWindow = new google.maps.InfoWindow({
+        content: waterString
+      });
+
+      bottledwater.addListener('click', function() {
+        eachMarkerInfoWindow.open(map, bottledwater);
+      });
+
+      bottledwater2.addListener('click', function() {
+        eachMarkerInfoWindow.open(map, bottledwater2);
+      });
+
+      bottledwater3.addListener('click', function() {
+        eachMarkerInfoWindow.open(map, bottledwater3);
       });
     // Construct the circle for each value in citymap.
     // Note: We scale the area of the circle based on the population.
