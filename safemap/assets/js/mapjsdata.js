@@ -8,7 +8,7 @@ var damagedCityRadius = {
 };
 
 function initMap() {
-    window.location.href = 'http://bartektendev.github.io/safemap/usermap.html#popuploading';
+    //window.location.href = 'http://bartektendev.github.io/safemap/usermap.html#popuploading';
     map = new google.maps.Map(document.getElementById('map'), {
       zoom: 2,
       center: {lat: 50, lng: 50},
@@ -342,7 +342,7 @@ function initMap() {
     map.controls[google.maps.ControlPosition.LEFT_BOTTOM].push(
         mapTypeControlDiv);
 
-    setTimeout(function(){ document.getElementById("finishedLoadingClosebtn").click(); }, 2000);
+    //setTimeout(function(){ document.getElementById("finishedLoadingClosebtn").click(); }, 2000);
 }
 
 function initZoomControl(map) {
