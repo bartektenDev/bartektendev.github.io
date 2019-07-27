@@ -8,7 +8,7 @@ var damagedCityRadius = {
 };
 
 function initMap() {
-    window.location.href = 'http://127.0.0.1/safemap/usermap.html#popuploading';
+    window.location.href = 'http://bartektendev.github.io/safemap/usermap.html#popuploading';
     map = new google.maps.Map(document.getElementById('map'), {
       zoom: 2,
       center: {lat: 50, lng: 50},
