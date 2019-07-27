@@ -25,7 +25,7 @@ function initMap() {
     initMapTypeControl(map);
     initFullscreenControl(map);
 
-    infoWindow = new google.maps.InfoWindow;
+    infoWindow = new google.maps.InfoWindow();
 
     // Try HTML5 geolocation.
     if (navigator.geolocation) {
@@ -36,7 +36,7 @@ function initMap() {
         };
 
         map.setCenter({lat: pos.lat-0.00001, lng: pos.lng});
-        map.setZoom(15)
+        map.setZoom(15);
 
         userPosMarker = new google.maps.Marker({
             position: {lat: pos.lat-0.00001, lng: pos.lng},
@@ -118,7 +118,7 @@ function initMap() {
         draggable: false
       });
 
-    var foodicon2 = new google.maps.Marker({
+    var foodicon3 = new google.maps.Marker({
         position: {lat: 41.9834622, lng: -88.07232871},
         map: map,
         title: 'Food',
@@ -449,9 +449,9 @@ function getUserLocationAndSet()  {
       };
 
       map.setCenter({lat: pos.lat-0.00001, lng: pos.lng});
-      map.setZoom(15)
+      map.setZoom(15);
 
-      userPosMarker.setPosition(pos)
+      userPosMarker.setPosition(pos);
 
       // infoWindow.setPosition(pos);
       // infoWindow.setContent('Location found.');
