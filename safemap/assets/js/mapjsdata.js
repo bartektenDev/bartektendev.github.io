@@ -1,3 +1,5 @@
+var map, locationOfUserWindowInfo, userPosMarker;
+
 var damagedCityRadius = {
   chicago: {
     center: {lat: 41.9764607, lng: -88.0553876},
@@ -6,8 +8,6 @@ var damagedCityRadius = {
 };
 
 function initMap() {
-    var map, locationOfUserWindowInfo;
-
     map = new google.maps.Map(document.getElementById('map'), {
       zoom: 2,
       center: {lat: 50, lng: 50},
@@ -31,7 +31,7 @@ function initMap() {
         map.setCenter({lat: pos.lat-0.00001, lng: pos.lng});
         map.setZoom(15)
 
-        var userPosMarker = new google.maps.Marker({
+        userPosMarker = new google.maps.Marker({
             position: {lat: pos.lat-0.00001, lng: pos.lng},
             map: map,
             title: 'Hello World!',
@@ -55,11 +55,11 @@ function initMap() {
     var input = document.getElementById('search');
     var searchBox = new google.maps.places.SearchBox(input);
 
-    var marker = new google.maps.Marker({
+    var dangerzone1 = new google.maps.Marker({
         position: {lat: 41.9764607, lng: -88.0553876},
         map: map,
-        title: 'Hello World!',
-        icon: './assets/images/pinmarkerbasic48.png',
+        title: 'Danger Zone',
+        icon: './assets/images/pindangerzonemarker.png',
         draggable: false
       });
 
@@ -75,7 +75,7 @@ function initMap() {
         position: {lat: 41.9664622, lng: -88.0352871},
         map: map,
         title: 'Drinking Water',
-        icon: './assets/images/pinmarkerbottledwater48.png',
+        icon: './assets/images/pinmarkerbottledwater648.png',
         draggable: false
       });
 
@@ -83,7 +83,7 @@ function initMap() {
         position: {lat: 41.985622, lng: -88.0682871},
         map: map,
         title: 'Drinking Water',
-        icon: './assets/images/pinmarkerbottledwater48.png',
+        icon: './assets/images/pinmarkerbottledwater648.png',
         draggable: false
       });
 
@@ -91,55 +91,95 @@ function initMap() {
         position: {lat: 41.974622, lng: -88.0382871},
         map: map,
         title: 'Drinking Water',
-        icon: './assets/images/pinmarkerbottledwater48.png',
+        icon: './assets/images/pinmarkerbottledwater648.png',
+        draggable: false
+      });
+
+    var foodicon = new google.maps.Marker({
+        position: {lat: 41.9634622, lng: -88.0342871},
+        map: map,
+        title: 'Food',
+        icon: './assets/images/pinfoodiconmaker48.png',
+        draggable: false
+      });
+
+    var foodicon2 = new google.maps.Marker({
+        position: {lat: 41.9734622, lng: -88.07932871},
+        map: map,
+        title: 'Food',
+        icon: './assets/images/pinfoodiconmaker48.png',
+        draggable: false
+      });
+
+    var foodicon2 = new google.maps.Marker({
+        position: {lat: 41.9834622, lng: -88.07232871},
+        map: map,
+        title: 'Food',
+        icon: './assets/images/pinfoodiconmaker48.png',
         draggable: false
       });
 
     var meds = new google.maps.Marker({
         position: {lat: 41.9814622, lng: -88.0842871},
         map: map,
-        title: 'Hello World!',
-        icon: './assets/images/pinmarkermeds48.png',
+        title: 'First Aid',
+        icon: './assets/images/pinfirstaidiconbag48.png',
         draggable: false
       });
 
     var meds2 = new google.maps.Marker({
         position: {lat: 41.9614622, lng: -88.0542871},
         map: map,
-        title: 'Hello World!',
-        icon: './assets/images/pinmarkermeds48.png',
+        title: 'First Aid',
+        icon: './assets/images/pinfirstaidiconbag48.png',
         draggable: false
       });
 
     var meds3 = new google.maps.Marker({
         position: {lat: 41.9814622, lng: -88.0242871},
         map: map,
-        title: 'Hello World!',
-        icon: './assets/images/pinmarkermeds48.png',
+        title: 'First Aid',
+        icon: './assets/images/pinfirstaidiconbag48.png',
         draggable: false
       });
 
     var pwroutage = new google.maps.Marker({
         position: {lat: 41.951622, lng: -88.0542871},
         map: map,
-        title: 'Hello World!',
-        icon: './assets/images/pinmarkerpowerout248.png',
+        title: 'Power Outage',
+        icon: './assets/images/pinmarkerpowerout548.png',
         draggable: false
       });
 
     var pwroutage2 = new google.maps.Marker({
         position: {lat: 41.991622, lng: -88.0382871},
         map: map,
-        title: 'Hello World!',
-        icon: './assets/images/pinmarkerpowerout248.png',
+        title: 'Power Outage',
+        icon: './assets/images/pinmarkerpowerout548.png',
         draggable: false
       });
 
     var pwroutage3 = new google.maps.Marker({
         position: {lat: 41.961622, lng: -88.0382871},
         map: map,
-        title: 'Hello World!',
-        icon: './assets/images/pinmarkerpowerout248.png',
+        title: 'Power Outage',
+        icon: './assets/images/pinmarkerpowerout548.png',
+        draggable: false
+      });
+
+    var shelterarea = new google.maps.Marker({
+        position: {lat: 41.964622, lng: -88.0582871},
+        map: map,
+        title: 'Shelter Area',
+        icon: './assets/images/pinshelterarea248.png',
+        draggable: false
+      });
+
+    var shelterarea2 = new google.maps.Marker({
+        position: {lat: 41.994622, lng: -88.0482871},
+        map: map,
+        title: 'Shelter Area',
+        icon: './assets/images/pinshelterarea248.png',
         draggable: false
       });
 
@@ -235,6 +275,42 @@ function initMap() {
       map.fitBounds(bounds);
     });
 
+    var iconBase = './assets/images/';
+        var icons = {
+          drinking_water: {
+            name: 'Drinking Water',
+            icon: iconBase + 'pinmarkerbottledwater648.png'
+          },
+          food: {
+            name: 'Food',
+            icon: iconBase + 'pinfoodiconmaker48.png'
+          },
+          medicaion_health: {
+            name: 'First Aid',
+            icon: iconBase + 'pinfirstaidiconbag48.png'
+          },
+          tents: {
+            name: 'Shelter Area',
+            icon: iconBase + 'pinshelterarea248.png'
+          },
+          poweroutage: {
+            name: 'Power Outage',
+            icon: iconBase + 'pinmarkerpowerout548.png'
+          }
+        };
+
+    var legend = document.getElementById('legend');
+        for (var key in icons) {
+          var type = icons[key];
+          var name = type.name;
+          var icon = type.icon;
+          var div = document.createElement('div');
+          div.innerHTML = '<img src="' + icon + '"> ' + name.fontsize(4);
+          legend.appendChild(div);
+        }
+
+    map.controls[google.maps.ControlPosition.RIGHT_BOTTOM].push(legend);
+
 }
 
 function handleLocationError(browserHasGeolocation, infoWindow, pos) {
@@ -243,4 +319,34 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
                         'Error: The Geolocation service failed.' :
                         'Error: Your browser doesn\'t support geolocation.');
   infoWindow.open(map);
+}
+
+function getUserLocationAndSet()  {
+  console.log('Getting location...');
+  // Try HTML5 geolocation.
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(function(position) {
+      var pos = {
+        lat: position.coords.latitude,
+        lng: position.coords.longitude
+      };
+
+      map.setCenter({lat: pos.lat-0.00001, lng: pos.lng});
+      map.setZoom(15)
+
+      userPosMarker.setPosition(pos)
+
+      // infoWindow.setPosition(pos);
+      // infoWindow.setContent('Location found.');
+      // infoWindow.open(map);
+      map.setCenter(pos);
+      console.log('Location set!');
+
+    }, function() {
+      handleLocationError(true, infoWindow, map.getCenter());
+    });
+  } else {
+    // Browser doesn't support Geolocation
+    handleLocationError(false, infoWindow, map.getCenter());
+  }
 }
