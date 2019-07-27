@@ -8,15 +8,22 @@ var damagedCityRadius = {
 };
 
 function initMap() {
+    window.location.href = 'http://127.0.0.1/safemap/usermap.html#popuploading';
     map = new google.maps.Map(document.getElementById('map'), {
       zoom: 2,
       center: {lat: 50, lng: 50},
       mapTypeId: 'terrain',
+      fullscreen: 'true',
+      disableDefaultUI: true,
       mapTypeControlOptions: {
             mapTypeIds: ['roadmap', 'satellite', 'hybrid', 'terrain',
                     'styled_map']
           }
     });
+
+    initZoomControl(map);
+    initMapTypeControl(map);
+    initFullscreenControl(map);
 
     infoWindow = new google.maps.InfoWindow;
 
@@ -309,8 +316,118 @@ function initMap() {
           legend.appendChild(div);
         }
 
-    map.controls[google.maps.ControlPosition.RIGHT_BOTTOM].push(legend);
+    var logoPicture = document.getElementById('logoPic');
+    var searchbar = document.getElementById('searchq');
+    var controlsbottom = document.getElementById('controlsbottom');
+    //controlsbottom.style.display = "block";
 
+    map.controls[google.maps.ControlPosition.RIGHT_BOTTOM].push(legend);
+    map.controls[google.maps.ControlPosition.BOTTOM_CENTER].push(controlsbottom);
+    map.controls[google.maps.ControlPosition.LEFT_TOP].push(searchbar);
+    map.controls[google.maps.ControlPosition.BOTTOM_LEFT].push(logoPicture);
+
+    var mapTypeControlDiv = document.querySelector('.maptype-control');
+        document.querySelector('.maptype-control-map').onclick = function() {
+          mapTypeControlDiv.classList.add('maptype-control-is-map');
+          mapTypeControlDiv.classList.remove('maptype-control-is-satellite');
+          map.setMapTypeId('roadmap');
+        };
+        document.querySelector('.maptype-control-satellite').onclick =
+            function() {
+          mapTypeControlDiv.classList.remove('maptype-control-is-map');
+          mapTypeControlDiv.classList.add('maptype-control-is-satellite');
+          map.setMapTypeId('hybrid');
+        };
+
+    map.controls[google.maps.ControlPosition.LEFT_BOTTOM].push(
+        mapTypeControlDiv);
+
+    setTimeout(function(){ document.getElementById("finishedLoadingClosebtn").click(); }, 2000);
+}
+
+function initZoomControl(map) {
+  document.querySelector('.zoom-control-in').onclick = function() {
+    map.setZoom(map.getZoom() + 1);
+  };
+  document.querySelector('.zoom-control-out').onclick = function() {
+    map.setZoom(map.getZoom() - 1);
+  };
+  map.controls[google.maps.ControlPosition.RIGHT_BOTTOM].push(
+      document.querySelector('.zoom-control'));
+}
+
+function initMapTypeControl(map) {
+  var mapTypeControlDiv = document.querySelector('.maptype-control');
+  document.querySelector('.maptype-control-map').onclick = function() {
+    mapTypeControlDiv.classList.add('maptype-control-is-map');
+    mapTypeControlDiv.classList.remove('maptype-control-is-satellite');
+    map.setMapTypeId('roadmap');
+  };
+  document.querySelector('.maptype-control-satellite').onclick =
+      function() {
+    mapTypeControlDiv.classList.remove('maptype-control-is-map');
+    mapTypeControlDiv.classList.add('maptype-control-is-satellite');
+    map.setMapTypeId('hybrid');
+  };
+
+  map.controls[google.maps.ControlPosition.LEFT_TOP].push(
+      mapTypeControlDiv);
+}
+
+function initFullscreenControl(map) {
+  var elementToSendFullscreen = map.getDiv().firstChild;
+  var fullscreenControl = document.querySelector('.fullscreen-control');
+  map.controls[google.maps.ControlPosition.RIGHT_TOP].push(
+      fullscreenControl);
+
+
+  fullscreenControl.onclick = function() {
+    if (isFullscreen(elementToSendFullscreen)) {
+      exitFullscreen();
+    } else {
+      requestFullscreen(elementToSendFullscreen);
+    }
+  };
+
+  document.onwebkitfullscreenchange =
+  document.onmsfullscreenchange =
+  document.onmozfullscreenchange =
+  document.onfullscreenchange = function() {
+    if (isFullscreen(elementToSendFullscreen)) {
+      fullscreenControl.classList.add('is-fullscreen');
+    } else {
+      fullscreenControl.classList.remove('is-fullscreen');
+    }
+  };
+}
+
+function isFullscreen(element) {
+  return (document.fullscreenElement ||
+          document.webkitFullscreenElement ||
+          document.mozFullScreenElement ||
+          document.msFullscreenElement) == element;
+}
+function requestFullscreen(element) {
+  if (element.requestFullscreen) {
+    element.requestFullscreen();
+  } else if (element.webkitRequestFullScreen) {
+    element.webkitRequestFullScreen();
+  } else if (element.mozRequestFullScreen) {
+    element.mozRequestFullScreen();
+  } else if (element.msRequestFullScreen) {
+    element.msRequestFullScreen();
+  }
+}
+function exitFullscreen() {
+  if (document.exitFullscreen) {
+    document.exitFullscreen();
+  } else if (document.webkitExitFullscreen) {
+    document.webkitExitFullscreen();
+  } else if (document.mozCancelFullScreen) {
+    document.mozCancelFullScreen();
+  } else if (document.msCancelFullScreen) {
+    document.msCancelFullScreen();
+  }
 }
 
 function handleLocationError(browserHasGeolocation, infoWindow, pos) {
