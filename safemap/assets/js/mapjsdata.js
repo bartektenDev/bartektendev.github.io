@@ -10,7 +10,7 @@ var damagedCityRadius = {
 function initMap() {
     //window.location.href = 'http://bartektendev.github.io/safemap/usermap.html#popuploading';
     map = new google.maps.Map(document.getElementById('map'), {
-      zoom: 2,
+      zoom: 5,
       center: {lat: 50, lng: 50},
       mapTypeId: 'terrain',
       fullscreen: 'true',
@@ -321,9 +321,9 @@ function initMap() {
     var controlsbottom = document.getElementById('controlsbottom');
     //controlsbottom.style.display = "block";
 
-    map.controls[google.maps.ControlPosition.RIGHT_BOTTOM].push(legend);
+    //map.controls[google.maps.ControlPosition.RIGHT_BOTTOM].push(legend);
     map.controls[google.maps.ControlPosition.BOTTOM_CENTER].push(controlsbottom);
-    map.controls[google.maps.ControlPosition.LEFT_TOP].push(searchbar);
+    map.controls[google.maps.ControlPosition.TOP_CENTER].push(searchbar);
     map.controls[google.maps.ControlPosition.BOTTOM_LEFT].push(logoPicture);
 
     var mapTypeControlDiv = document.querySelector('.maptype-control');
