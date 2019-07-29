@@ -102,36 +102,8 @@ function initMap() {
 
     infoWindow = new google.maps.InfoWindow();
 
-    // Try HTML5 geolocation.
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(function(position) {
-        var pos = {
-          lat: position.coords.latitude,
-          lng: position.coords.longitude
-        };
-
-        map.setCenter({lat: pos.lat-0.00001, lng: pos.lng});
-        map.setZoom(15);
-
-        userPosMarker = new google.maps.Marker({
-            position: {lat: pos.lat-0.00001, lng: pos.lng},
-            map: map,
-            title: 'Hello World!',
-            icon: './assets/images/radarpulse3.gif',
-            draggable: false
-          });
-
-        // infoWindow.setPosition(pos);
-        // infoWindow.setContent('Location found.');
-        // infoWindow.open(map);
-        map.setCenter(pos);
-      }, function() {
-        handleLocationError(true, infoWindow, map.getCenter());
-      });
-    } else {
-      // Browser doesn't support Geolocation
-      handleLocationError(false, infoWindow, map.getCenter());
-    }
+    map.setCenter({lat: 41.9764607, lng: -88.0553876});
+    map.setZoom(15);
 
     // Create the search box and link it to the UI element.
     var input = document.getElementById('search');
@@ -541,6 +513,14 @@ function getUserLocationAndSet()  {
 
       map.setCenter({lat: pos.lat-0.00001, lng: pos.lng});
       map.setZoom(15);
+
+      userPosMarker = new google.maps.Marker({
+          position: {lat: 41.9764607, lng: -88.0553876},
+          map: map,
+          title: 'You are here',
+          icon: './assets/images/radarpulse3.gif',
+          draggable: false
+        });
 
       userPosMarker.setPosition(pos);
 
