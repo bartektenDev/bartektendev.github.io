@@ -14,11 +14,7 @@ function initMap() {
       center: {lat: 50, lng: 50},
       mapTypeId: 'terrain',
       fullscreen: 'true',
-      disableDefaultUI: true,
-      mapTypeControlOptions: {
-            mapTypeIds: ['roadmap', 'satellite', 'hybrid', 'terrain',
-                    'styled_map']
-          }
+      disableDefaultUI: true
     });
 
     initZoomControl(map);
