@@ -350,7 +350,7 @@
           </li><li>
               <a href="#">Live Stream</a>
           </li><li>
-              <a href='send_distress_call.php?sendcall=1'>Send Distress Call</a>
+              <button id="requestcallbtn">Send Distress Call</button>
           </li><li>
               <a href="#popup1">Safety Checklist</a>
           </li>
@@ -366,6 +366,24 @@
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBsgat5Zox4OOhr53CyyefATPdeLF0v4Tc&libraries=places&callback=initMap"
     async defer></script>
     <script src="./assets/js/scriptsearch.js"></script>
+    <script>
+        $('#requestcallbtn').click (function () {
+            $.ajax({
+            type: 'POST',
+            url: './requestcall.php',
+            data: {coordinates:$('#coordinateslatandlong').val()},
+            success:function(result, status, xhr)
+              {
+                alert('ok');
+              },
+            error:function(xhr, status, error)
+              {
+                alert('error');
+              }
+            });
+        });
+    </script>
+
 </div>
 
 <!-- <div class="item">
