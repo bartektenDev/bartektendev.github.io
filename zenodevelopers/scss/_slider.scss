@@ -1,7 +1,7 @@
 /* Slider css
 ============================================================================================ */
 .main_slider_area{
-    background: url(../img/home-slider/slider-bg-1.png) no-repeat scroll center center;
+    background: url(../img/) no-repeat scroll center center;
     background-size: cover;
     .rev_slider{
         .tp-revslider-mainul{
@@ -13,7 +13,7 @@
                     }
                     .secand_text{
                         color: #6b7d8e;
-                    }  
+                    }
                     .more_btn{
                         transition: all 400ms linear !important;
                         padding: 0px 53px;

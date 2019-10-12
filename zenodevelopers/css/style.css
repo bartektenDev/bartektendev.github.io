@@ -348,7 +348,7 @@ i:before {
 
 .banner_area:before {
   content: "";
-  background: url(../img/banner/banner-bg.png) no-repeat scroll center right;
+  background: url(../img/bigzenoslidercoolpurple.png) no-repeat scroll center right;
   position: absolute;
   right: 0px;
   top: 0px;
@@ -405,7 +405,7 @@ i:before {
 /* Slider css
 ============================================================================================ */
 .main_slider_area {
-  background: url(../img/home-slider/slider-bg-1.png) no-repeat scroll center center;
+  background: url(../img/bigzenoslidercoolpurple.png) no-repeat scroll center center;
   background-size: cover;
 }
 
