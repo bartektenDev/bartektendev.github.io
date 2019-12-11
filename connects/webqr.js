@@ -172,7 +172,7 @@ function load()
 		initCanvas(800, 500);
 		qrcode.callback = read;
 		document.getElementById("mainbody").style.display="inline";
-        setwebcam();
+        //setwebcam();
 	}
 	else
 	{
@@ -181,7 +181,7 @@ function load()
         '<br><p id="mp2">sorry your browser is not supported</p><br><br>'+
         '<p id="mp1">try <a href="http://www.mozilla.com/firefox"><img src="firefox.png"/></a> or <a href="http://chrome.google.com"><img src="chrome_logo.gif"/></a> or <a href="http://www.opera.com"><img src="Opera-logo.png"/></a></p>';
 	}
-  setimg();
+
 }
 
 function setwebcam()
